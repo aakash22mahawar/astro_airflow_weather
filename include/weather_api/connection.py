@@ -7,12 +7,15 @@ from logging_config import setup_logger
 # Initialize the logger
 logger = setup_logger()
 
+# Add your custom module path to sys.path
+config_file_path = '/usr/local/airflow/include/weather_api/config.ini'  # Update if different since it is inside docker container 
+
 
 # Function to establish and return the Snowflake connection using private key authentication
 def get_snowflake_connection():
     # Load the configuration from the config.ini file
     config = configparser.ConfigParser()
-    config.read('config.ini')
+    config.read(config_file_path)
 
     try:
         # Read Snowflake credentials from the config file
@@ -57,13 +60,13 @@ def get_snowflake_connection():
 
     except Exception as e:
         logger.error(f"Snowflake connection failed: {e}")
-        return None
+        raise
 
 
 # Test the connection
-if __name__ == "__main__":
-    conn = get_snowflake_connection()
-    if conn:
-        cursor = conn.cursor()
-        cursor.execute("SELECT CURRENT_VERSION()")
-        print("Snowflake Version:", cursor.fetchone()[0])
+#if __name__ == "__main__":
+   # conn = get_snowflake_connection()
+    #if conn:
+       # cursor = conn.cursor()
+        #cursor.execute("SELECT CURRENT_VERSION()")
+        #print("Snowflake Version:", cursor.fetchone()[0])

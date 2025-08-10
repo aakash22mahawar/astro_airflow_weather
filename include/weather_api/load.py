@@ -43,5 +43,5 @@ def load_to_snowflake():
 
 
 # # Example usage
-if __name__ == "__main__":
-    load_to_snowflake()
+#if __name__ == "__main__":
+   # load_to_snowflake()

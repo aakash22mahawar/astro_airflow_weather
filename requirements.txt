@@ -2,3 +2,5 @@
 
 astronomer-cosmos
 apache-airflow-providers-snowflake
+snowflake-connector-python
+pyarrow<19.0.0

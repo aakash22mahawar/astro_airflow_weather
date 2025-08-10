@@ -5,26 +5,26 @@ import sys
 import os
 
 # Add your custom module path to sys.path
-CASH_FLOW_DIR = '/usr/local/airflow/include/cash_flow'  # Update if different
-sys.path.append(CASH_FLOW_DIR)
+weather_api_dir = '/usr/local/airflow/include/weather_api'  # Update if different
+sys.path.append(weather_api_dir)
 
-# Python function that runs your ETL script
+# Python function that runs your ELT script
 def run_elt_python():
-    from cash_main import main  # Ensure correct module import
-    main()
+    from load import load_to_snowflake  # Ensure correct module import
+    load_to_snowflake()
 
 # Define the DAG
 with DAG(
-    dag_id='etl_cashflow_python',
-    description='Python-based ETL to process and load cash flow data into Snowflake',
+    dag_id='elt_weather_python',
+    description='Python-based ELT to process and weather data into Snowflake',
     start_date=datetime(2024, 1, 1),
     schedule_interval=None,  # Trigger manually or via another DAG
     catchup=False,
-    tags=["etl", "cashflow", "snowflake"],
+    tags=["elt", "weather", "snowflake"],
 ) as dag:
 
     etl_task = PythonOperator(
-        task_id='run_cashflow_etl',
-        python_callable=run_etl_python,
+        task_id='run_weather_elt',
+        python_callable=run_elt_python,
     )
 
