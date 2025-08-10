@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: raw_source
+    database: FIVETRAN
+    schema: google_sheets
+    tables:
+      - name: weather
+        identifier: weather_data
+
+
+
+
