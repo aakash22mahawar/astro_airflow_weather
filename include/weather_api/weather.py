@@ -6,7 +6,7 @@ from logging_config import setup_logger
 logger = setup_logger()
 
 # API configuration
-API_KEY = "b0cf709d8500ea71d108c52238ca0135"
+API_KEY = "xxxxxxx"
 BASE_URL = "https://api.weatherstack.com/current"
 
 
@@ -49,4 +49,5 @@ def fetch_weather():
 # if __name__ == "__main__":
 #     city_name = "New Delhi"
 #     fetch_weather()
+
 
